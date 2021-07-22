@@ -1,0 +1,41 @@
+{% extends "Orders/base.html" %}
+{% load static %}
+{% block content %}
+
+<h3 class="container">Order Details</h3>
+<div class="container">
+    <div class="jumbotron">
+        <p>Order Number: <span class="text-primary"><b>{{order_details.order_id}}</b></span></p>
+        <p>Shipping Details: <span class="text-primary"><b>{{order_details.shipping_name}}</b>, {{order_details.shipping_address}}</span></p>
+        <p>Contact Number: <span class="text-primary"><b>{{order_details.contact}}</b></span></p>
+        <hr>
+        <h4>Order Status</h4>
+        {% for status in status_history %}
+            <button type="button" class="btn btn-success">{{status}}</button>
+        {% if not forloop.last %}<i class="fas fa-angle-double-right"></i>{% endif %}
+        {% endfor %}
+        <hr>
+        <h4>Product Information</h4>
+        <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="th-sm">Product ID</th>
+                    <th class="th-sm">Product Name</th>
+                    <th class="th-sm">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in product_list %}
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.market_price}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+{% endblock %}
