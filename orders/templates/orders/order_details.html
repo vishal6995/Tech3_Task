@@ -11,7 +11,11 @@
         <hr>
         <h4>Order Status</h4>
         {% for status in status_history %}
-            <button type="button" class="btn btn-success">{{status}}</button>
+            {% if status == "closed" %}
+            <button type="button" class="btn btn-success" >{{status}}</button>
+            {% else %}
+             <button type="button" class="btn btn-primary">{{status}}</button>
+            {% endif %}
         {% if not forloop.last %}<i class="fas fa-angle-double-right"></i>{% endif %}
         {% endfor %}
         <hr>
