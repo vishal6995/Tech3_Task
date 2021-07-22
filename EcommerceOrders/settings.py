@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-i*_a@e(__zmjt)haa4u2&l)e_ngjoafs4_=uu8y5jq#quh=cy!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecommerceorders.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
