@@ -1,8 +1,28 @@
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#ordersTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
+
+  $('#statusFilter').change(function(){
+    console.log("status func");
+    var url = $('#filterStatus').attr('filter-status');
+    console.log(url);
+    var status = $(this).val();
+    console.log(status);
+
+
+
+        $.ajax({
+            url:url,
+            data:{
+                'status':status,
+            },
+            success: function (data){
+                console.log(data);
+                $("#filtered").html(data);
+                $("#filtered").show;
+                $('#defaultfilter').fadeOut();
+
+            }
+        });
+
   });
+
 });
