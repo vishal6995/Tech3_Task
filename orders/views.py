@@ -1,17 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
-from .serializers import OrdersSerializer
 from .models import Orders, OrderStatus, Products
-# from drf_multiple_model.views import ObjectMultipleModelAPIView
-
-
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Orders.objects.all().order_by('customer')
-    serializer_class = OrdersSerializer
-
-# class OrderDetailsViewSet(viewsets.ModelViewSet):
-#     queryset = Orders.objects.get()
-#     serializer_class = OrdersSerializer
 
 
 def ListOrders(request):
@@ -35,3 +23,15 @@ def OrderDetails(request,order_id):
     }
 
     return render(request, "Orders/order_details.html", args)
+
+def filterstatus(request):
+    status_val = request.GET.get('status')
+    if status_val != 'All':
+        orders = Orders.objects.all().filter(status=status_val)
+    else:
+        orders = Orders.objects.all()
+    print("[ORDERS:]",orders)
+    args={
+        'orders': orders,
+    }
+    return render(request, "orders/filterstatus.html", args)
