@@ -1,1 +1,0 @@
-web: gunicorn EcommerceOrders.wsgi
