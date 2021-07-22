@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'orders',
     'UpdateOrdersTable',
-    'rest_framework',
-    'drf_multiple_model',
 ]
 
 MIDDLEWARE = [
