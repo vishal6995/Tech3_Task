@@ -5,8 +5,11 @@ from .models import Orders, OrderStatus, Products
 def ListOrders(request):
     orders = Orders.objects.all()
 
+    status_list = OrderStatus.objects.values('status').distinct()
+
     args = {
-        'orders': orders
+        'orders': orders,
+        'status_list': status_list,
     }
 
     return render(request, "Orders/orders_list.html", args)
