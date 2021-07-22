@@ -17,11 +17,15 @@ def ListOrders(request):
 def OrderDetails(request,order_id):
     order_details = Orders.objects.get(order_id=order_id)
     status_history = OrderStatus.objects.filter(order_id=order_id).order_by('chgdate')
+    status_history_list = []
+    for status in status_history:
+        if status.status not in status_history_list:
+            status_history_list.append(status.status)
     product_list = Products.objects.filter(orders=order_id)
 
     args = {
         'order_details':order_details,
-        'status_history':status_history,
+        'status_history':status_history_list,
         'product_list':product_list,
     }
 
