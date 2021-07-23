@@ -1,0 +1,12 @@
+asgiref
+certifi
+charset-normalizer
+dj-database-url
+idna
+mysql-connector-python
+psycopg2
+pytz
+requests
+sqlparse
+urllib3
+whitenoise
